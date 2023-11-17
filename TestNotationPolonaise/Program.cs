@@ -9,6 +9,11 @@ namespace TestNotationPolonaise
 {
     class Program
     {
+        /// <summary>
+        /// calcul à partir de la notation polonaise
+        /// </summary>
+        /// <param name="laFormule"></param>
+        /// <returns></returns>
         static float Polonaise(String laFormule)
         {
             try
@@ -25,22 +30,19 @@ namespace TestNotationPolonaise
                         switch (tableau[i])
                         {
                             case "+":
-                                tableau[i] = (float.Parse(tableau[i + 1]) + float.Parse(tableau[i + 2])).ToString();
-                                break;
+                                tableau[i] = (float.Parse(tableau[i + 1]) + float.Parse(tableau[i + 2])).ToString(); break;
                             case "-":
-                                tableau[i] = (float.Parse(tableau[i + 1]) - float.Parse(tableau[i + 2])).ToString();
-                                break;
+                                tableau[i] = (float.Parse(tableau[i + 1]) - float.Parse(tableau[i + 2])).ToString(); break;
                             case "*":
-                                tableau[i] = (float.Parse(tableau[i + 1]) * float.Parse(tableau[i + 2])).ToString();
-                                break;
+                                tableau[i] = (float.Parse(tableau[i + 1]) * float.Parse(tableau[i + 2])).ToString(); break;
                             case "/":
                                 if (tableau[i + 2] == "0")
                                 {
                                     return float.NaN;
                                 }
-                                tableau[i] = (float.Parse(tableau[i + 1]) / float.Parse(tableau[i + 2])).ToString();
-                                break;
+                                tableau[i] = (float.Parse(tableau[i + 1]) / float.Parse(tableau[i + 2])).ToString(); break;
                         }
+
                         // décalage des contenus des cases
                         for (int j = i + 1; j < last - 1; j++)
                         {
@@ -49,7 +51,8 @@ namespace TestNotationPolonaise
                         // nettoyage des 2 dernières cases du tableau
                         tableau[last] = "";
                         tableau[last - 1] = "";
-                        // actualisation
+
+                        // définition de la nouvelle dernière case
                         last -= 2;
                         i = last + 1;
                     }
